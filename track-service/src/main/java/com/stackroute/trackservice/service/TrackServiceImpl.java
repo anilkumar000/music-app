@@ -19,6 +19,7 @@ import java.util.Optional;
 @Service
 //serves to create beans of only activated profiles but whereas in @Primary and @Qualifier tells to use the respective beans
 @Profile("MainService")
+@Primary
 public class TrackServiceImpl implements TrackService {
     private TrackRepository trackRepository;
 
