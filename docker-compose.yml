@@ -1,11 +1,20 @@
 
 version: "3"
 services:
+  #  Container for MongoDB
+  #  docker run -d --name mongoDB -p 27017:27017  <image_name>
+  mongodb:
+    image: mongo
+    container_name: mongoDB
+    network_mode: host
+    ports:
+      - '27017:27017'
   #  Container for TrackService
   #  docker run -d --name track-service-Mongo -p 8082:8082  <image_name>
   track-service:
     build: track-service/.
     container_name: track-service-Mongo
+    network_mode: host
     ports:
       - '8082:8082'
 
@@ -14,6 +23,7 @@ services:
   api-gateway:
     build: api-gateway/.
     container_name: api-gateway
+    network_mode: host
     ports:
       - '8090:8090'
 
@@ -33,6 +43,7 @@ services:
   eureka-server:
     build: eureka-server/.
     container_name: eureka-server
+    network_mode: host
     ports:
       - '8080:8080'
 
