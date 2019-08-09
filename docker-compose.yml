@@ -2,7 +2,7 @@
 version: "3"
 services:
   #  Container for MongoDB
-  #  docker run -d --name mongoDB -p 27017:27017  <image_name>
+  #  docker run -d --name mongoDb -p 27017:27017  <image_name>
   mongodb:
     image: mongo
     container_name: mongoDB
