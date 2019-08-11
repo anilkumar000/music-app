@@ -38,8 +38,8 @@ public class TrackController {
      * @Input id Id of the track
      * @Output Track
      */
-    @GetMapping("track/{id}")
-    public ResponseEntity<?> getTrackById(@PathVariable int id) throws TrackNotFoundException
+    @GetMapping("track")
+    public ResponseEntity<?> getTrackById(@RequestParam int id) throws TrackNotFoundException
     {
             Track foundTrackById = trackService.getTrackById(id);
             return new ResponseEntity<>(foundTrackById, HttpStatus.FOUND);
@@ -63,7 +63,7 @@ public class TrackController {
      * Get all tracks
      * @Output All tracks in the database
      */
-    @GetMapping("track")
+    @GetMapping("tracks")
     public ResponseEntity<?> getAllTracks()throws Exception {
 
             List<Track> listOfTracks=trackService.getAllTracks();

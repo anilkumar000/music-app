@@ -26,7 +26,7 @@ public class ApplicationListenerSeedData implements ApplicationListener<ContextR
 
 //    Using Environment Interface but getProperty of this method only returns String objects
     @Autowired
-    public Environment environment;
+    private Environment environment;
     @Autowired
     public ApplicationListenerSeedData( TrackService trackService) {
         this.trackService = trackService;
