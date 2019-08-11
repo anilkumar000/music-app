@@ -101,9 +101,9 @@ public class TrackController {
      * @Output Updated track
      */
     @PutMapping("track")
-    public ResponseEntity<?> updateTrack(@RequestParam int id, @RequestBody Track trackToUpdate) throws TrackNotFoundException{
+    public ResponseEntity<?> updateTrack(@RequestBody Track trackToUpdate) throws TrackNotFoundException{
 //        try {
-            Track updatedTrack=trackService.updateTrack(id,trackToUpdate);
+            Track updatedTrack=trackService.updateTrack(trackToUpdate);
             return new ResponseEntity<>(updatedTrack,HttpStatus.OK);
 //        }catch (TrackNotFoundException ex){
 //            return new ResponseEntity<>(ex.getMessage(),HttpStatus.NOT_FOUND);

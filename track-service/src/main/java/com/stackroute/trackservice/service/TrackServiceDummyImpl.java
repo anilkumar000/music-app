@@ -34,7 +34,7 @@ public class TrackServiceDummyImpl implements TrackService {
     }
 
     @Override
-    public Track updateTrack(int id, Track trackToUpdate) throws TrackNotFoundException {
+    public Track updateTrack(Track trackToUpdate) throws TrackNotFoundException {
         return null;
     }
 

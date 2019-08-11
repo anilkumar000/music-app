@@ -110,15 +110,19 @@ public class TrackServiceImpl implements TrackService {
      * @Output Updated track.
      */
     @Override
-    public Track updateTrack(int id, Track trackToUpdate) throws TrackNotFoundException {
-        if (!trackRepository.existsById(id)) {
-            throw new TrackNotFoundException("Track to update doesn't exist,try to create new!");
+    public Track updateTrack(Track trackToUpdate) throws TrackNotFoundException {
+        if (trackRepository.existsById(trackToUpdate.getTrackId())) {
+            Optional<Track> optionalTrack = trackRepository.findById(trackToUpdate.getTrackId());
+            if (optionalTrack.isPresent()) {
+                Track updatedTrack = optionalTrack.get();
+                updatedTrack.setTrackName(trackToUpdate.getTrackName());
+                updatedTrack.setComments(trackToUpdate.getComments());
+                return trackRepository.save(trackToUpdate);
+            }
         }
-        trackRepository.findById(id).get().setTrackName(trackToUpdate.getTrackName());
-        trackRepository.findById(id).get().setComments(trackToUpdate.getComments());
-        return trackRepository.save(trackRepository.findById(id).get());
-
+        throw new TrackNotFoundException();
     }
+
 
     @Override
     public List<Track> selectTrackByName(String trackname) throws TrackNotFoundException {
