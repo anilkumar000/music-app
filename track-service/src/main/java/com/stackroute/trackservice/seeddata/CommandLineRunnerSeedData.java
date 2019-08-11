@@ -4,7 +4,6 @@ import com.stackroute.trackservice.domain.Track;
 import com.stackroute.trackservice.exceptions.TrackAlreadyExistsException;
 import com.stackroute.trackservice.service.TrackService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.PropertySource;
@@ -25,9 +24,9 @@ into Java objects graphs, but it requires standard getter setter methods to map 
  */
 @ConfigurationProperties("track")
 public class CommandLineRunnerSeedData implements CommandLineRunner {
-    int trackId;
-    String trackName;
-    String comments;
+    private int trackId;
+    private String trackName;
+    private String comments;
 
    private TrackService trackService;
 
@@ -42,13 +41,11 @@ public class CommandLineRunnerSeedData implements CommandLineRunner {
         Track track1=new Track(trackId,trackName,comments);
         Track track2=new Track(5,"Beautiful","Album by Angemi Remix");
         Track track3=new Track(6,"Psycho","Album of Saaho");
-        try {
+
             trackService.saveTrack(track1);
             trackService.saveTrack(track2);
             trackService.saveTrack(track3);
-        }catch (TrackAlreadyExistsException ex){
-            ex.printStackTrace();
-        }
+
 
     }
 

@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
+//Handles the Controller Thrown Exceptions
 @ControllerAdvice
 public class GlobalResponseEntityExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(value= { TrackAlreadyExistsException.class, TrackNotFoundException.class })
@@ -12,6 +13,7 @@ public class GlobalResponseEntityExceptionHandler extends ResponseEntityExceptio
 
         return new ResponseEntity<>(ex.getMessage(),HttpStatus.NOT_FOUND);
     }
+//    ExceptionHandler for InternalError
     @ExceptionHandler(value= {Exception.class})
     protected ResponseEntity<Object> handleInternalConflict(Exception ex) {
 

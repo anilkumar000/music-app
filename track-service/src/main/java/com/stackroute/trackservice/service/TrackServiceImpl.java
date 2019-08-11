@@ -61,9 +61,6 @@ public class TrackServiceImpl implements TrackService {
             throw new TrackNotFoundException("Track you searched for, Is not available");
         } else {
             foundTrack = trackRepository.findById(id).get();
-            if (foundTrack == null) {
-                throw new TrackNotFoundException("Track is null");
-            }
         }
         return foundTrack;
     }
@@ -83,7 +80,7 @@ public class TrackServiceImpl implements TrackService {
             throw new TrackNotFoundException("Track you want to delete, Does not exist");
         }
         Optional<Track> optionalTrack = trackRepository.findById(id);
-        trackRepository.delete(optionalTrack.get());
+        optionalTrack.ifPresent(track -> trackRepository.delete(track));
         return optionalTrack;
 
     }
@@ -123,7 +120,12 @@ public class TrackServiceImpl implements TrackService {
         throw new TrackNotFoundException();
     }
 
-
+    /**
+     * Finds the Track by Name as a reference.
+     *
+     * @Input Name of the track to find
+     * @Output List of found tracks.
+     */
     @Override
     public List<Track> selectTrackByName(String trackname) throws TrackNotFoundException {
 

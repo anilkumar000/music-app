@@ -12,11 +12,11 @@ import java.util.Optional;
  * in the application.
  */
 public interface TrackService {
-    public Track saveTrack(Track track) throws TrackAlreadyExistsException;
-    public Track getTrackById(int id) throws TrackNotFoundException;
-    public Optional<Track> deleteTrackById(int id) throws TrackNotFoundException;
-    public List<Track> getAllTracks() throws Exception;
-    public Track updateTrack(Track trackToUpdate) throws TrackNotFoundException;
-    public List<Track> selectTrackByName(String trackName) throws TrackNotFoundException;
+     Track saveTrack(Track track) throws TrackAlreadyExistsException;
+     Track getTrackById(int id) throws TrackNotFoundException;
+     Optional<Track> deleteTrackById(int id) throws TrackNotFoundException;
+     List<Track> getAllTracks() throws Exception;
+     Track updateTrack(Track trackToUpdate) throws TrackNotFoundException;
+     List<Track> selectTrackByName(String trackName) throws TrackNotFoundException;
     }
 

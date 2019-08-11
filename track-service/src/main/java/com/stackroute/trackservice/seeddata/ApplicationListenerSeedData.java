@@ -4,10 +4,8 @@ import com.stackroute.trackservice.domain.Track;
 import com.stackroute.trackservice.exceptions.TrackAlreadyExistsException;
 import com.stackroute.trackservice.service.TrackService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationListener;
-import org.springframework.context.annotation.PropertySources;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
@@ -17,6 +15,7 @@ import org.springframework.stereotype.Component;
         */
 @Component
 public class ApplicationListenerSeedData implements ApplicationListener<ContextRefreshedEvent> {
+
     //   TrackService to perform operations on DB.
     private TrackService trackService;
 
@@ -38,14 +37,17 @@ public class ApplicationListenerSeedData implements ApplicationListener<ContextR
         Track track1=new Track(id,environment.getProperty("trackName"),environment.getProperty("comments"));
         Track track2=new Track(2,"Beautiful Life","Album by Angemi Remix");
         Track track3=new Track(3,"Psycho","Album of Saaho");
+
         try {
             trackService.saveTrack(track1);
             trackService.saveTrack(track2);
             trackService.saveTrack(track3);
-        }catch (TrackAlreadyExistsException ex){
-            ex.printStackTrace();
+        } catch (TrackAlreadyExistsException e) {
+            e.printStackTrace();
         }
-
-
     }
 }
+
+
+
+

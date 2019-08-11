@@ -5,13 +5,11 @@ import com.stackroute.trackservice.domain.Track;
 import com.stackroute.trackservice.exceptions.GlobalResponseEntityExceptionHandler;
 import com.stackroute.trackservice.exceptions.TrackAlreadyExistsException;
 import com.stackroute.trackservice.exceptions.TrackNotFoundException;
-import com.stackroute.trackservice.service.TrackService;
 import com.stackroute.trackservice.service.TrackServiceImpl;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;
-import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -26,7 +24,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import static org.junit.Assert.*;
 import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.when;
 
